@@ -7,9 +7,6 @@ const configuration = new Configuration({
 
 });
 const openai = new OpenAIApi(configuration);
-type Data = {
-  name: string
-}
 
 export default async function handler(
   req: NextApiRequest,
