@@ -20,7 +20,7 @@ export default function Home() {
             console.log(respose)
             const data = await respose.json()
             const output = data.data
-            const paragraph = document.getElementById("output")
+            const paragraph :any = document.getElementById("output")
             paragraph.innerText = output
             console.log(data)
           }}>click me</button>

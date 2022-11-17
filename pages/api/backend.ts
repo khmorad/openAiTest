@@ -9,8 +9,8 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+  reqL:any,
+  res:any
 ) {
   console.log("clicked")
   const promp_request = `write an essay about turtles`;
