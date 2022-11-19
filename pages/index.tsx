@@ -5,12 +5,15 @@ import styles from '../styles/Home.module.css'
 import { Configuration, OpenAIApi } from "openai";
 import { text } from 'node:stream/consumers';
 import { render } from 'react-dom';
+import { stat } from 'node:fs';
+import { PuffLoader } from 'react-spinners';
 
-
-
+import { useState } from 'react';
+let showLoader = false
 export default function Home() {
 
-  
+  const [showLoader, setShowLoader] = useState(false)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -22,9 +25,11 @@ export default function Home() {
       <main className={styles.main}>
         <p id="output"></p>
         	<div id = "textbox">
-						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style ={{color:'grey'}}></textarea>
+						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style ={{ color: 'white', marginRight: '400px'}}></textarea>
 					</div>
-        <button onClick={async function () {
+         
+        <button style ={{ color: 'white', marginRight: '300px'}}onClick={async function () {
+          setShowLoader(true)
           const respose = await fetch("api/backend")
           console.log(respose)
           const data = await respose.json()
@@ -32,7 +37,11 @@ export default function Home() {
           const paragraph: any = document.getElementById("output")
           paragraph.innerText = output
           console.log(data)
+          
+          
         }}>click me</button>
+         {showLoader ? <PuffLoader color="#36d7b7"/> : null}
+         
       </main>
 
       <footer className={styles.footer}>
