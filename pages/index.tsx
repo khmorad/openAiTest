@@ -3,9 +3,14 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 //import for openAi
 import { Configuration, OpenAIApi } from "openai";
+import { text } from 'node:stream/consumers';
+import { render } from 'react-dom';
+
 
 
 export default function Home() {
+
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -16,8 +21,8 @@ export default function Home() {
       
       <main className={styles.main}>
         <p id="output"></p>
-        	<div>
-						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows="25"></textarea>
+        	<div id = "textbox">
+						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style ={{color:'grey'}}></textarea>
 					</div>
         <button onClick={async function () {
           const respose = await fetch("api/backend")
@@ -43,5 +48,7 @@ export default function Home() {
         </a>
       </footer>
     </div>
+    
   )
+ 
 }
