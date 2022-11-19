@@ -12,7 +12,7 @@ export default async function handler(
 ) {
   console.log("clicked")
   try{
-  const promp_request = `write an essay about why olive garden is better than mac donalds`;
+  const promp_request = `write an essay about turtles`;
   
   
   const completion = await openai.createCompletion({
