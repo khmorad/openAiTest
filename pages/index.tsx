@@ -25,10 +25,10 @@ export default function Home() {
       <main className={styles.main}>
         <p id="output"></p>
         	<div id = "textbox">
-						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style ={{ color: 'white', marginRight: '400px'}}></textarea>
+						<textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style ={{ color: 'white', marginRight: '100px', width: "600px"}}></textarea>
 					</div>
          
-        <button style ={{ color: 'white', marginRight: '300px'}}onClick={async function () {
+        <button style ={{ color: 'white', marginRight: '100px'}}onClick={async function () {
           setShowLoader(true)
           const respose = await fetch("api/backend")
           console.log(respose)
@@ -37,11 +37,14 @@ export default function Home() {
           const paragraph: any = document.getElementById("output")
           paragraph.innerText = output
           console.log(data)
-          
+          setShowLoader(false)
           
         }}>click me</button>
-         {showLoader ? <PuffLoader color="#36d7b7"/> : null}
-         
+         <div style={{marginRight: '100px'}}>
+         {showLoader ? <PuffLoader color="#36d7b7" /> : null}
+         </div>
+        
+        
       </main>
 
       <footer className={styles.footer}>
