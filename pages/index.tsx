@@ -40,7 +40,7 @@ export default function Home() {
           setShowLoader(false)
           
         }}>click me</button>
-         <div style={{marginRight: '100px'}}>
+         <div style={{marginRight: '200px'}}>
          {showLoader ? <PuffLoader color="#36d7b7" /> : null}
          </div>
         
