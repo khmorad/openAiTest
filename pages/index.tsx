@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+//import for openAi
 import { Configuration, OpenAIApi } from "openai";
 
 
@@ -15,15 +16,15 @@ export default function Home() {
 
       <main className={styles.main}>
         <p id="output"></p>
-          <button onClick={async function(){
-            const respose = await fetch("api/backend")
-            console.log(respose)
-            const data = await respose.json()
-            const output = data.data
-            const paragraph :any = document.getElementById("output")
-            paragraph.innerText = output
-            console.log(data)
-          }}>click me</button>
+        <button onClick={async function () {
+          const respose = await fetch("api/backend")
+          console.log(respose)
+          const data = await respose.json()
+          const output = data.data
+          const paragraph: any = document.getElementById("output")
+          paragraph.innerText = output
+          console.log(data)
+        }}>click me</button>
       </main>
 
       <footer className={styles.footer}>
