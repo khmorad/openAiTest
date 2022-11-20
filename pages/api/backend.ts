@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introductions
 import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
-  apiKey: "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"
+  apiKey:process.env.OPENAI_API_KEY//
 
 });
 const openai = new OpenAIApi(configuration);
@@ -12,7 +12,10 @@ export default async function handler(
 ) {
   console.log("clicked")
   try{
-  const promp_request = `write an essay about turtles`;
+    const essay = null;
+  const promp_request = `Provide three better, different, and corrected versions of the following and also a critique:
+  ${essay} 
+  Critique:`;
   
   
   const completion = await openai.createCompletion({

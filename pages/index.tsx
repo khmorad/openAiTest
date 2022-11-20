@@ -6,8 +6,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { text } from 'node:stream/consumers';
 import { render } from 'react-dom';
 import { stat } from 'node:fs';
-import { PropagateLoader } from 'react-spinners';
-
+import { PropagateLoader, PuffLoader } from 'react-spinners';
 import { useState } from 'react';
 let showLoader = false
 export default function Home() {
@@ -25,11 +24,11 @@ export default function Home() {
       <main className={styles.main}>
 
         <div id="textbox">
-          <textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20}
-                    style={{ color: 'white', background: '#404040', marginRight: '100px', width: "600px" }}></textarea>
+        <p style={{fontFamily:"Cursive"}}>AI that can help with essays anytime without hesitation</p>
+          <textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style={{ color: 'white', marginRight: '300px', width: "500px", borderRadius:'10px' }}></textarea>
         </div>
 
-        <button style={{ color: 'white', marginRight: '100px' }} onClick={async function () {
+        <button style={{ color: 'white', marginRight: '300px' }} onClick={async function () {
           setShowLoader(true)
           const respose = await fetch("api/backend")
           console.log(respose)
@@ -41,16 +40,27 @@ export default function Home() {
           setShowLoader(false)
 
         }}>click me</button>
-        <div style={{background: '#525252'}}>
-          <div style={{ color: 'white', fontSize: '18px' }}>
-            <p id="output"></p>
-          </div>
+        <div style={{marginRight:"330px"}}>
+          {showLoader ? <PropagateLoader color="#4e44e9" /> : null}
         </div>
-
-        {showLoader ? <PropagateLoader color="#36d7b7" /> : null}
+        <div style={{ color: 'white', fontSize: '18px' }}>
+          <p id="output"></p>
+        </div>
 
       </main>
 
+      <footer className={styles.footer}>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{' '}
+          <span className={styles.logo}>
+            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          </span>
+        </a>
+      </footer>
     </div>
 
   )
