@@ -6,7 +6,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { text } from 'node:stream/consumers';
 import { render } from 'react-dom';
 import { stat } from 'node:fs';
-import { PuffLoader } from 'react-spinners';
+import { PropagateLoader } from 'react-spinners';
 
 import { useState } from 'react';
 let showLoader = false
@@ -25,7 +25,8 @@ export default function Home() {
       <main className={styles.main}>
 
         <div id="textbox">
-          <textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20} style={{ color: 'white', marginRight: '100px', width: "600px" }}></textarea>
+          <textarea name="demo-message" id="demo-message" placeholder="Enter your writing here" rows={20}
+                    style={{ color: 'white', background: '#404040', marginRight: '100px', width: "600px" }}></textarea>
         </div>
 
         <button style={{ color: 'white', marginRight: '100px' }} onClick={async function () {
@@ -40,29 +41,16 @@ export default function Home() {
           setShowLoader(false)
 
         }}>click me</button>
-        <div style={{ color: 'white', fontSize: '18px' }}>
-          <p id="output"></p>
+        <div style={{background: '#525252'}}>
+          <div style={{ color: 'white', fontSize: '18px' }}>
+            <p id="output"></p>
+          </div>
         </div>
 
-
-        {showLoader ? <PuffLoader color="#36d7b7" /> : null}
-
-
+        {showLoader ? <PropagateLoader color="#36d7b7" /> : null}
 
       </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
 
   )
